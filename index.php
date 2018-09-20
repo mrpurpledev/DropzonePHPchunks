@@ -1,7 +1,7 @@
 <html>
  
 <head>   
-       <meta http-equiv="X-UA-Compatible" content="IE=edge" /> <!-- diables Compatibility Mode on Intranet Sites in DW -->
+       <meta http-equiv="X-UA-Compatible" content="IE=edge" /> <!-- diables Compatibility Mode on Intranet Sites -->
 <!-- 1 -->
 <link href="css/dropzone.css" type="text/css" rel="stylesheet" />
  <!--link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css"--> 
