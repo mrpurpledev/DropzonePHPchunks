@@ -1,3 +1,5 @@
+///Simple Upload, without chunking
+
 <?php
 $ds          = DIRECTORY_SEPARATOR;  //1
  
