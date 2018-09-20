@@ -15,6 +15,9 @@
      
     function returnJson($arr){
         header('Content-type: application/json');
+		//debug show Variables
+		print $_POST["newFileName"]; 
+		
         print json_encode($arr);
         exit;
     }
@@ -136,9 +139,18 @@
             foreach($parts as $file) {
                 $loaded_size += filesize($file);
             }
+			//Read new Filename from Form
+			if (isset($_POST['newFileName']) && !empty($_POST['newFileName'])) {
+				$newFileName = $_POST["newFileName"]; 
+			}
+			else{
+				$newFileName = $filename;
+			}
+			
             if ($loaded_size >= $totalSize and $new_path = createFileFromChunks(
                                                             $file_chunks_folder,
                                                             $filename,
+															$newFileName,
                                                             $extension,
                                                             $totalSize,
                                                             $totalChunks,
@@ -158,11 +170,11 @@
      * @param string $fileName - the original file name
      * @param string $totalSize - original file size (in bytes)
      */
-    function createFileFromChunks($file_chunks_folder, $fileName, $extension, $total_size, $total_chunks,
+    function createFileFromChunks($file_chunks_folder, $fileName, $newFileName , $extension, $total_size, $total_chunks,
                                             &$successes, &$errors, &$warnings) {
 
         $rel_path = "functions/uploads/whole_from_chunks/";
-        $saveName = getNextAvailableFilename( $rel_path, $fileName, $extension, $errors );
+        $saveName = getNextAvailableFilename( $rel_path, $newFileName, $extension, $errors );
 
         if( !$saveName ){
             return false;
